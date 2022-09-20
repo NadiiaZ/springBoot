@@ -1,6 +1,9 @@
 package com.zashykhina.springBoot.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -10,10 +13,16 @@ public class User {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "firstname")
+    @NotEmpty
+    @Size(min = 2, max = 30)
     private String name;
     @Column(name = "lastname")
+    @NotEmpty
+    @Size(min = 2, max = 30)
     private String surname;
     @Column(name = "email")
+    @NotEmpty
+    @Email
     private String email;
 
     public User(String name, String surname, String email) {
